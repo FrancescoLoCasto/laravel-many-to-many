@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post;
+use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -16,6 +18,12 @@ class PostTechnologySeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        //
+        $posts = Post::all();
+
+        $technologiesIds = Technology::all()->pluck('id');
+
+        foreach ($posts as $post) {
+            $post->technologies()->attach($faker->randomElement($technologiesIds, 3 ));
+        }
     }
 }

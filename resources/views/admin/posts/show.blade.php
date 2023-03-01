@@ -15,6 +15,13 @@
       <div class="card-body">
         <h5 class="card-title">{{$post->title}}</h5>
         <div class="card-body">
+
+         <div>
+            @foreach ($post->technologies as $technology)
+                {{ $technology->name }}
+            @endforeach
+         </div>
+
          @if (str_starts_with($post->image, 'http'))
             <img src="{{$post->image}}"
          @else
