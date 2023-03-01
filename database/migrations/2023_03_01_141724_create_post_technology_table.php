@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('post_technology', function (Blueprint $table) {
             $table->unsignedBigInteger('post_id');
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
 
 
 
 
             $table->unsignedBigInteger('technology_id');
-            $table->foreign('technology_id')->references('id')->on('technologies');
+            $table->foreign('technology_id')->references('id')->on('technologies')->onUpdate('cascade')->onDelete('cascade');
 
-
+            $table->primary(['post_id', 'technology_id']);
 
             $table->timestamps();
         });
