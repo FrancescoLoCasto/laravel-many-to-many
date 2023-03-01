@@ -111,6 +111,7 @@ class PostController extends Controller
 
         ]);
         $post->update($data);
+        $post->technologies()->sync($data['technologies']);
         return redirect()->route('admin.posts.show', compact('post'));
 
         if($request->hasFile('image')){
