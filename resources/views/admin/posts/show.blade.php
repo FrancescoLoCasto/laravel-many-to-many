@@ -18,7 +18,9 @@
 
          <div>
             @foreach ($post->technologies as $technology)
-                {{ $technology->name }}
+                <span class="badge rounded-pill p-3" style="background-color: {{$technology->bg_color}}; color: {{$technology->accent_color}}">
+                  {{ $technology->name }}
+                </span>
             @endforeach
          </div>
 
