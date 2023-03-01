@@ -21,7 +21,8 @@ class PostController extends Controller
         'post_date' => 'required',
         'content' => 'required',
         'image' => 'required|image',
-        'type_id'=> 'required|exists:types,id'
+        'type_id'=> 'required|exists:types,id',
+        'technologies' => 'array|exists:technologies,id'
     ];
     /**
      * Display a listing of the resource.
@@ -61,6 +62,10 @@ class PostController extends Controller
         $newPost = new Post();
         $newPost ->fill($data);
         $newPost->save();
+        if (isset($data['technologies'])){
+            $newPost->technologies()->sync($data['technologies']);
+        }
+
 
         return redirect()->route('admin.posts.index')->with('message', "The post has created");
     }
@@ -101,7 +106,9 @@ class PostController extends Controller
                 'post_date' => 'required|after:yesterday',
                 'content' => 'required',
                 'image'=> 'image|required',
-                'type_id'=> 'required|exists:types,id'
+                'type_id'=> 'required|exists:types,id',
+                'technologies' => 'array|exists:technologies,id'
+
         ]);
         $post->update($data);
         return redirect()->route('admin.posts.show', compact('post'));

@@ -14,6 +14,7 @@
         <tr>
           <th scope="col">#id</th>
           <th scope="col">Title</th>
+          <th scope="col">Technology</th>
           <th scope="col">Author</th>
           <th scope="col">Post</th>
           <th scope="col">
@@ -29,6 +30,13 @@
          <tr>
             <td>{{$post->id}}</td>
             <td>{{$post->title}}</td>
+            <td>
+               @forelse ($post->technologies as $technology)
+                  {{$technology->name}}
+               @empty
+                     No Technology
+               @endforelse
+            </td>
             <td>{{$post->author}}</td>
             <td>{{$post->post_date}}</td>
             <td>

@@ -18,13 +18,8 @@
     </div>
 
     <div class="mb-3">
-      <label for="post_technology" class="form-label">
-        Select your Technology
-      </label>
-
-
         @foreach ($technologies as $technology)
-          <input type="checkbox" name="type_id" class="form-check-input" value="{{$technology->id}}">
+          <input type="checkbox" name="technologies[]" class="form-check-input" value="{{$technology->id}}">
           <label class="form-check-label">{{$technology->name}}</label>
         @endforeach
 
