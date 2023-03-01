@@ -9,6 +9,10 @@ class Technology extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = ['name', 'accent_color', 'bg_color'];
+
+
     public function posts(){
         return $this->belongsToMany(Post::class);
     }
