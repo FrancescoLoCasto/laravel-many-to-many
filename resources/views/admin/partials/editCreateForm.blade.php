@@ -16,6 +16,19 @@
       </select>
 
     </div>
+
+    <div class="mb-3">
+      <label for="post_technology" class="form-label">
+        Select your Technology
+      </label>
+
+
+        @foreach ($technologies as $technology)
+          <input type="checkbox" name="type_id" class="form-check-input" value="{{$technology->id}}">
+          <label class="form-check-label">{{$technology->name}}</label>
+        @endforeach
+
+    </div>
    <div class="mb-3">
       <label for="post_title" class="form-label">Title</label>
       <input type="text" class="form-control" id="post_title" placeholder="" name="title" value="{{old('title', $post->title)}}">
