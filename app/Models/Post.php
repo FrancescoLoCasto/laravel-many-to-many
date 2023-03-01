@@ -26,4 +26,8 @@ class Post extends Model
     public function isImageUrl(){
          return filter_var($this->image, FILTER_VALIDATE_URL);
     }
+
+    public function technologies(){
+        return $this->belongsToMany(Technology::class);
+    }
 }
